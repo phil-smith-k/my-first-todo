@@ -6,12 +6,10 @@
 </template>
 
 <script setup>
-    import { toRef } from 'vue';
     import AppButton  from '@/components/AppButton.vue';
     import { storeManager } from '@/stores/store';
 
-    const todoItem = defineModel('todoItem', { default: { title: 'make a new todo'} });
-    console.log(todoItem.value.title);
+    const todoItem = defineModel('todoItem', { default: { title: 'make a new todo!'} });
 
     function submitForm() {
         if (!todoItem.value.title) {
@@ -24,7 +22,7 @@
         }
 
         storeManager.act('todo', 'saveTodo', todo);
-        todoItem.value.title = '';
+        todoItem.value = { title: '' };
     }
 </script>
 

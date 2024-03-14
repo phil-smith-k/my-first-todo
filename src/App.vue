@@ -11,7 +11,6 @@
     import TodoList from './components/TodoList.vue';
     //import useTodoStore from './stores/todos/todoStore';
 
-    const initialInput = 'type here!'
     // const todos = storeManager.getAsRef('todo.todos');
     //const store = useTodoStore();
 
@@ -32,3 +31,9 @@
     // Reassinging the value of a reactive is dangerous as computed properties will reference the initial value
     // Getters return a reactive
 </script>
+
+<style scoped>
+    * > * + * {
+        margin-top: 1em;
+    }
+</style>
