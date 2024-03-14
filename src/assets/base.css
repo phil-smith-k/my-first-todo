@@ -1,0 +1,76 @@
+:root {
+    /* general definitions */
+    --border-radius: 0.5em;
+    --box-shadow: 
+    /* generously borrowed from Cody House https://codyhouse.co/nuggets/beautiful-css-shadows */
+    inset 0 0 0.5px 1px hsla(0, 0%,  
+    100%, 0.075),
+    /* shadow ring 👇 */
+    0 0 0 1px hsla(0, 0%, 0%, 0.05),
+    /* multiple soft shadows 👇 */
+    0 0.3px 0.4px hsla(0, 0%, 0%, 0.02),
+    0 0.9px 1.5px hsla(0, 0%, 0%, 0.045),
+    0 3.5px 6px hsla(0, 0%, 0%, 0.09);
+
+    /* color palette definition */
+    --theme-dark-purple: #352c35;
+    --theme-light-purple: #7D5C65;
+    --text-light-1: #F8F0E3;
+
+    /* semantic color variable definition - light */
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* semantic color variable definition - dark */
+        --color-background: var(--theme-dark-purple);
+        --color-background-1: var(--theme-light-purple);
+        --color-text: var(--text-light-1);
+    }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+li[class]
+,ul[class] {
+    list-style-type: none;
+    padding: 1em;
+}
+
+input {
+    border: none;
+    font-size: inherit;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
