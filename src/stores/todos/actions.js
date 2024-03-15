@@ -3,13 +3,14 @@ const actions = {
         const index = this.todos.findIndex(td => td.id === todo.id);
 
         if (index !== -1) {
-            this.todos[index] = todo;
             todo.isEditing = false;
+            this.todos[index] = todo;
             
             return;
         }
 
         todo.id = this.nextId;
+        todo.isCompleted = false;
         this.todos.push(todo);
     },
     deleteTodo(id) {
@@ -18,6 +19,16 @@ const actions = {
     editTodo(id) {
         const todo = this.todos.find(td => td.id === id);
         todo.isEditing = true;
+    },
+    toggleComplete(id) {
+        const todos = this.todos;
+        const index = todos.findIndex(td => td.id === id);
+
+        const todo = this.todos[index];
+        todo.isCompleted = !todo.isCompleted;
+
+        todos.push(this.todos.splice(index, 1)[0]);
+        this.todos = todos;
     }
 };
 

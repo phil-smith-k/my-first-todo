@@ -27,6 +27,11 @@
 </script>
 
 <style>
+
+    .todo-form {
+        min-width: 400px;
+    }
+
     .app-input {
         background-color: var(--color-background);
         box-shadow: var(--box-shadow);

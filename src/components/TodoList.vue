@@ -16,5 +16,8 @@
         border: 2px solid var(--color-background-1);
         min-height: 3em;
         padding: 1em;
+        max-width: 600px;
+        min-width: 400px;
+        margin: 0 auto;
     }
 </style>

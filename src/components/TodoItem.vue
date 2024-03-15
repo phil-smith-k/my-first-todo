@@ -1,6 +1,6 @@
 <template>
-    <li  class="list-item">
-        <div v-if="!todoItem.isEditing" class="list-item-container">
+    <li :class="`list-item ${todoItem.isCompleted ? 'complete' : ''}`">
+        <div v-if="!todoItem.isEditing" :class="`list-item-container`">
             <p>{{ todoItem.title }}</p>
             <action-button-set :actionOptions="actionOptions"/>
         </div>
@@ -25,15 +25,31 @@
         storeManager.act('todo', 'editTodo', id);
     }
 
+    function toggleComplete(id) {
+        storeManager.act('todo', 'toggleComplete', id);
+    }
+
     const actionOptions = [
         {
             action: () => editTodo(props.todoItem.id),
-            iconName: 'fa-pencil',
+            display: () => { 
+                return !props.todoItem.isCompleted; 
+            },
+            iconName: () => 'fa-pencil',
         },
         {
             action: () => deleteTodoItem(props.todoItem.id),
-            iconName: 'fa-xmark',
+            display: () => true,
+            iconName: () => 'fa-xmark',
         },
+        {
+            action: () => toggleComplete(props.todoItem.id),
+            display: () => true,
+            iconName: () => {
+                const icon = props.todoItem.isCompleted ? 'fa-undo' : 'fa-check';
+                return icon;
+            }
+        }
     ];
 </script>
 
@@ -48,5 +64,10 @@
     .list-item-container {
         display: flex;
         justify-content: space-between;
+    }
+
+    .complete {
+        text-decoration: line-through;
+        background-color: var(--theme-dark-gray);
     }
 </style>

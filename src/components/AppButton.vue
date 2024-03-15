@@ -1,6 +1,6 @@
 <template>
-    <button @click="props.action" class="app-btn">
-        <font-awesome-icon :icon="props.iconName"></font-awesome-icon>
+    <button v-if="props.display ? props.display() : true" @click="props.action" class="app-btn">
+        <font-awesome-icon :icon="props.iconName"/>
     </button>
 </template>
 
@@ -9,6 +9,7 @@
     const props = defineProps({
         iconName: String,
         action: Function,
+        display: Function
     });
 
 </script>

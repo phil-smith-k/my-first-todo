@@ -1,5 +1,7 @@
 <template>
-    <todo-form />
+    <div>
+        <todo-form />
+    </div>
     <todo-list v-if="anyTodos" :todos="todos"/>
 </template>
 
@@ -33,6 +35,10 @@
 </script>
 
 <style scoped>
+    div {
+        text-align: center;
+    }
+
     * > * + * {
         margin-top: 1em;
     }

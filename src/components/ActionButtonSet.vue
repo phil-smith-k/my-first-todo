@@ -1,6 +1,11 @@
 <template>
     <div>
-        <app-button v-for="option in props.actionOptions" @click="option.action" :iconName="option.iconName"></app-button>
+        <app-button 
+            v-for="option in props.actionOptions" 
+            @click="option.action" 
+            :display="option.display" 
+            :iconName="option.iconName()"
+        />
     </div>
 </template>
 
@@ -10,6 +15,8 @@
     const props = defineProps({
         actionOptions: Array
     });
+
+    console.log(props.actionOptions);
 </script>
 
 <style scoped>
