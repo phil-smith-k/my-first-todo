@@ -2,7 +2,7 @@ import { defineStore, storeToRefs } from 'pinia';
 import { ref } from 'vue';
 
 export class StoreManager {
-   #useStores;
+    #useStores;
 
     constructor(configs) {
         this.#useStores = {};

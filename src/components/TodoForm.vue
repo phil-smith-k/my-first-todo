@@ -1,7 +1,10 @@
 <template>
-    <form class="todo-form" @submit.prevent>
-        <input class="app-input" v-model="todoItem.title" id="todo-input" />
-        <app-button :action="submitForm" :iconName="`fa-check`" />
+    <form class="todo-form" @submit.prevent autocomplete="off">
+        <input autocomplete="false" name="hidden" type="text" style="display:none;">
+        <input @focus="clearForm" class="app-input" v-model="todoItem.title" id="todo-input" />
+        <app-button :action="submitForm">
+            <font-awesome-icon v-slot :icon="`fa-check`"/>
+        </app-button>
     </form>
 </template>
 
@@ -10,6 +13,15 @@
     import { storeManager } from '@/stores/store';
 
     const todoItem = defineModel('todoItem', { default: { title: 'make a new todo!'} });
+
+    function clearForm() {
+        if (todoItem.value.isEditing) {
+            return;
+        }
+
+        const todo = todoItem.value;
+        todoItem.value = { ...todo, title : '' };
+    }
 
     function submitForm() {
         if (!todoItem.value.title) {
@@ -22,7 +34,7 @@
         }
 
         storeManager.act('todo', 'saveTodo', todo);
-        todoItem.value = { title: '' };
+        clearForm();
     }
 </script>
 

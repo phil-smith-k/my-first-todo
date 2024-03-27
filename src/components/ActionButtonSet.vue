@@ -5,7 +5,9 @@
             @click="option.action" 
             :display="option.display" 
             :iconName="option.iconName()"
-        />
+        >
+            <font-awesome-icon v-slot :icon="option.iconName()"/>
+        </app-button>
     </div>
 </template>
 
@@ -15,8 +17,6 @@
     const props = defineProps({
         actionOptions: Array
     });
-
-    console.log(props.actionOptions);
 </script>
 
 <style scoped>

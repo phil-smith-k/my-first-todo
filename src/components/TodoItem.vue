@@ -1,12 +1,10 @@
 <template>
-    <li :class="`list-item ${todoItem.isCompleted ? 'complete' : ''}`">
+    <li :draggable="true" :class="`list-item ${todoItem.isCompleted ? 'complete' : ''}`" >
         <div v-if="!todoItem.isEditing" :class="`list-item-container`">
             <p>{{ todoItem.title }}</p>
             <action-button-set :actionOptions="actionOptions"/>
         </div>
-        <todo-form v-else :todoItem="todoItem">
-
-        </todo-form>
+        <todo-form v-else :todoItem="todoItem"/>
     </li>
 </template>
 

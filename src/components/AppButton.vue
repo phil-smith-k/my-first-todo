@@ -1,13 +1,12 @@
 <template>
     <button v-if="props.display ? props.display() : true" @click="props.action" class="app-btn">
-        <font-awesome-icon :icon="props.iconName"/>
+        <slot></slot>
     </button>
 </template>
 
 <script setup>
 
     const props = defineProps({
-        iconName: String,
         action: Function,
         display: Function
     });
